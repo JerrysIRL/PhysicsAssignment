@@ -27,14 +27,15 @@ public class Ball : MonoBehaviour
     private void OnMouseUp()
     {
         _mousePressUpPos = Input.mousePosition;
-        Shoot(_mousePressDownPos- _mousePressUpPos );
+        Shoot(_mousePressDownPos - _mousePressUpPos);
         _trajectoryVisualizer.ClearTrajectory();
+        Destroy(gameObject, 3f);
     }
 
     private void OnMouseDrag()
     {
-        if(isShooting)
-            return; 
+        if (isShooting)
+            return;
         Vector3 direction = Input.mousePosition - _mousePressDownPos;
         Vector3 force = new Vector3(direction.x, direction.y * verticalForceMulti, direction.y) * forceMulti;
         _trajectoryVisualizer.UpdateTrajectory(force, _rb, transform.position);
@@ -46,7 +47,7 @@ public class Ball : MonoBehaviour
         {
             return;
         }
-        
+
         Vector3 myforce = new Vector3(force.x, force.y * verticalForceMulti, force.y) * forceMulti;
         _rb.AddForce(myforce);
         isShooting = true;

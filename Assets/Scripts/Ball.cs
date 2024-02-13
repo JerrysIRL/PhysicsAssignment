@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
         _mousePressUpPos = Input.mousePosition;
         Shoot(_mousePressDownPos - _mousePressUpPos);
         _trajectoryVisualizer.ClearTrajectory();
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 5f);
     }
 
     private void OnMouseDrag()

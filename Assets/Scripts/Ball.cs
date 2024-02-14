@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     [SerializeField] public Transform camPos;
 
     public Action ShootAction;
+
     private TrajectoryVisualizer _trajectoryVisualizer;
     private Rigidbody _rb;
     private Vector3 _mousePressDownPos;
@@ -30,11 +31,16 @@ public class Ball : MonoBehaviour
 
     private void OnMouseUp()
     {
-        _mousePressUpPos = Input.mousePosition;
-        Shoot(_mousePressDownPos - _mousePressUpPos);
+        var direction = GetShootingDirection();
+        Shoot(direction);
         _trajectoryVisualizer.ClearTrajectory();
         ShootAction?.Invoke();
         Destroy(gameObject, 5f);
+    }
+
+    private Vector3 GetShootingDirection()
+    {
+        return Input.mousePosition.y > _mousePressDownPos.y ? Input.mousePosition - _mousePressDownPos : Vector3.zero;
     }
 
     private void OnMouseDrag()
@@ -42,7 +48,7 @@ public class Ball : MonoBehaviour
         if (_isShooting)
             return;
 
-        Vector3 direction = Input.mousePosition - _mousePressDownPos;
+        Vector3 direction = GetShootingDirection();
         Vector3 force = new Vector3(direction.x, direction.y * verticalForceMulti, direction.y) * forceMulti;
         _trajectoryVisualizer.UpdateTrajectory(transform.TransformDirection(force), _rb, transform.position);
     }

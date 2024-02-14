@@ -8,7 +8,6 @@ public class BasketHoop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Scored!");
         _score++;
         scoreText.text = $"Score: {_score}";
     }

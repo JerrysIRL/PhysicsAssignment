@@ -8,7 +8,7 @@ public class BallPosVisualizer : MonoBehaviour
     [SerializeField] private Transform leftControl, rightControl;
     public int curvePoints = 10;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(left.position, 2f);
@@ -44,14 +44,7 @@ public class BallPosVisualizer : MonoBehaviour
 
         return flip ? Bezier(right.position, rightControl.position, mid.position, randomFloat) : Bezier(left.position, leftControl.position, mid.position, randomFloat);
     }
-
-    [ContextMenu("RandomPoint")]
-    void PrintRandomPoint()
-    {
-        Debug.Log(GetRandomPointOnBezier());
-    }
-
-
+    
     Vector3 Bezier(Vector3 a, Vector3 b, float t)
     {
         return Vector3.Lerp(a, b, t);

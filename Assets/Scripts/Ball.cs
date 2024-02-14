@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
@@ -48,14 +47,14 @@ public class Ball : MonoBehaviour
         _trajectoryVisualizer.UpdateTrajectory(transform.TransformDirection(force), _rb, transform.position);
     }
 
-    void Shoot(Vector3 force)
+    void Shoot(Vector3 direction)
     {
         if (_isShooting)
         {
             return;
         }
-        
-        Vector3 myforce = new Vector3(force.x, force.y * verticalForceMulti, force.y) * forceMulti;
+
+        Vector3 myforce = new Vector3(direction.x, direction.y * verticalForceMulti, direction.y) * forceMulti;
         _rb.AddForce(transform.TransformDirection(myforce));
         _isShooting = true;
     }

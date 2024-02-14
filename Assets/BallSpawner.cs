@@ -13,7 +13,7 @@ public class BallSpawner : MonoBehaviour
         _cam = Camera.main;
         SpawnNewBall();
     }
-    
+
 
     private void SpawnNewBall()
     {
@@ -24,10 +24,5 @@ public class BallSpawner : MonoBehaviour
         ball.transform.rotation = lookRotation;
         _cam.transform.position = ball.camPos.position;
         _cam.transform.rotation = ball.camPos.rotation;
-        // _cam.transform.rotation = Quaternion.Euler(_cam.transform.rotation.x, lookRotation.eulerAngles.y, lookRotation.eulerAngles.z);
-        // ball.ShootAction += SpawnNewBall;
-        // AdjustCamera(ball.transform.position);
     }
-
-   
 }

@@ -13,8 +13,7 @@ public class TrajectoryVisualizer : MonoBehaviour
     {
         _lineRenderer = GetComponent<LineRenderer>();
     }
-
-    // Start is called before the first frame update
+    
     public void UpdateTrajectory(Vector3 forceVector, Rigidbody rb, Vector3 startingPoint)
     {
         Vector3 velocity = (forceVector / rb.mass) * Time.fixedDeltaTime;
@@ -31,10 +30,10 @@ public class TrajectoryVisualizer : MonoBehaviour
                 velocity.y * stepTimePassed - 0.5f * Physics.gravity.y * stepTimePassed * stepTimePassed,
                 velocity.z * stepTimePassed
             );
-
+            
             _pointsList.Add(-movementVector + startingPoint);
         }
-
+        
         _lineRenderer.positionCount = lineSegments;
         _lineRenderer.SetPositions(_pointsList.ToArray());
     }

@@ -17,7 +17,7 @@ public class TrajectoryVisualizer : MonoBehaviour
     public void UpdateTrajectory(Vector3 forceVector, Rigidbody rb, Vector3 startingPoint)
     {
         Vector3 velocity = (forceVector / rb.mass) * Time.fixedDeltaTime;
-        float airDuration = (2 * velocity.y) / Physics.gravity.y;
+        float airDuration = (2 * velocity.y) / Physics.gravity.y; 
         float stepTime = airDuration / lineSegments;
 
         _pointsList.Clear();

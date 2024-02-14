@@ -29,20 +29,6 @@ public class Ball : MonoBehaviour
         _mousePressDownPos = Input.mousePosition;
     }
 
-    private void OnMouseUp()
-    {
-        var direction = GetShootingDirection();
-        Shoot(direction);
-        _trajectoryVisualizer.ClearTrajectory();
-        ShootAction?.Invoke();
-        Destroy(gameObject, 5f);
-    }
-
-    private Vector3 GetShootingDirection()
-    {
-        return Input.mousePosition.y > _mousePressDownPos.y ? Input.mousePosition - _mousePressDownPos : Vector3.zero;
-    }
-
     private void OnMouseDrag()
     {
         if (_isShooting)
@@ -53,6 +39,15 @@ public class Ball : MonoBehaviour
         _trajectoryVisualizer.UpdateTrajectory(transform.TransformDirection(force), _rb, transform.position);
     }
 
+    private void OnMouseUp()
+    {
+        var direction = GetShootingDirection();
+        Shoot(direction);
+        _trajectoryVisualizer.ClearTrajectory();
+        ShootAction?.Invoke();
+        Destroy(gameObject, 5f);
+    }
+    
     void Shoot(Vector3 direction)
     {
         if (_isShooting)
@@ -63,5 +58,10 @@ public class Ball : MonoBehaviour
         Vector3 myforce = new Vector3(direction.x, direction.y * verticalForceMulti, direction.y) * forceMulti;
         _rb.AddForce(transform.TransformDirection(myforce));
         _isShooting = true;
+    }
+   
+    private Vector3 GetShootingDirection()
+    {
+        return Input.mousePosition.y > _mousePressDownPos.y ? Input.mousePosition - _mousePressDownPos : Vector3.zero;
     }
 }

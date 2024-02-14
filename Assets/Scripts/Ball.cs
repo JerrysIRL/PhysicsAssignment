@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
@@ -7,6 +9,8 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private float forceMulti = 3f;
     [SerializeField] private float verticalForceMulti = 3f;
+
+    public Action ShootAction;
     private TrajectoryVisualizer _trajectoryVisualizer;
     private Rigidbody _rb;
     private Vector3 _mousePressDownPos;
@@ -29,6 +33,7 @@ public class Ball : MonoBehaviour
         _mousePressUpPos = Input.mousePosition;
         Shoot(_mousePressDownPos - _mousePressUpPos);
         _trajectoryVisualizer.ClearTrajectory();
+        ShootAction?.Invoke();
         Destroy(gameObject, 5f);
     }
 

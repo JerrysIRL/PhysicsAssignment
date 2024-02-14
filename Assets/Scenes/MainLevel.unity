@@ -415,6 +415,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &554847028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7753315972611898323, guid: 13021a99c1159854288e61320438e853, type: 3}
+  m_PrefabInstance: {fileID: 5923742003196599126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &554847033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554847028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56427f7f86dcb8745bb79220456626d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1141288459}
 --- !u!1 &583716624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3754672572623934518, guid: 13021a99c1159854288e61320438e853, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1141288459}
     - target: {fileID: 4488945939935855388, guid: 13021a99c1159854288e61320438e853, type: 3}
       propertyPath: m_Name
       value: Hoop
@@ -1114,7 +1136,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7753315972611898323, guid: 13021a99c1159854288e61320438e853, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 554847033}
   m_SourcePrefab: {fileID: 100100000, guid: 13021a99c1159854288e61320438e853, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

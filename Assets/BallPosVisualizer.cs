@@ -8,7 +8,7 @@ public class BallPosVisualizer : MonoBehaviour
     [SerializeField] private Transform leftControl, rightControl;
     public int curvePoints = 10;
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(left.position, 2f);
@@ -16,8 +16,8 @@ public class BallPosVisualizer : MonoBehaviour
         Gizmos.DrawWireSphere(right.position, 2f);
 
         Gizmos.color = Color.blue;
-        Vector3 pointInBetween = Bezier(left.position, leftControl.position, mid.position, 0.5f);
-        Gizmos.DrawWireSphere(pointInBetween, 2f);
+        Gizmos.DrawWireSphere(leftControl.position, 2f);
+        Gizmos.DrawWireSphere(rightControl.position, 2f);
         Vector3 startPos;
         Vector3 endPos;
         for (int i = 0; i < curvePoints; i++)

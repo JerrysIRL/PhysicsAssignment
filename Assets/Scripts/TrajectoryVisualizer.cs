@@ -32,11 +32,6 @@ public class TrajectoryVisualizer : MonoBehaviour
                 velocity.z * stepTimePassed
             );
 
-            // if (Physics.Raycast(startingPoint, -movementVector, out RaycastHit hit, movementVector.magnitude))
-            // {
-            //     break;
-            // }
-            
             _pointsList.Add(-movementVector + startingPoint);
         }
 

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
@@ -21,14 +20,14 @@ public class BallSpawner : MonoBehaviour
         Vector3 pos = ballPositioner.GetRandomPointOnBezier();
         Ball ball = Instantiate(ballPrefab, pos, Quaternion.identity);
         ball.ShootAction += SpawnNewBall;
-        AdjustCamera(ball.transform.position);
+        var lookRotation = Quaternion.LookRotation(hoopTransform.position - ball.transform.position);
+        ball.transform.rotation = lookRotation;
+        _cam.transform.position = ball.camPos.position;
+        _cam.transform.rotation = ball.camPos.rotation;
+        // _cam.transform.rotation = Quaternion.Euler(_cam.transform.rotation.x, lookRotation.eulerAngles.y, lookRotation.eulerAngles.z);
+        // ball.ShootAction += SpawnNewBall;
+        // AdjustCamera(ball.transform.position);
     }
 
-    private void AdjustCamera(Vector3 ballpos)
-    {
-        var direction = hoopTransform.position - ballpos;
-        
-        _cam.gameObject.transform.position = ballpos + cameraOffset;
-        
-    }
+   
 }
